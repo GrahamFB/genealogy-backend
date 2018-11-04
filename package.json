@@ -1,0 +1,38 @@
+{
+  "name": "genealogy-backend",
+  "version": "0.1.0",
+  "description": "Genealogy Backend (Node JS + Koa JS)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index",
+    "start": "cross-env NODE_ENVIRONMENT=production node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrahamBragg/genealogy-backend.git"
+  },
+  "keywords": [
+    "node",
+    "koa"
+  ],
+  "author": "Graham Bragg, Simon Bragg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrahamBragg/genealogy-backend/issues"
+  },
+  "homepage": "https://github.com/GrahamBragg/genealogy-backend#readme",
+  "dependencies": {
+    "@koa/cors": "^2.2.2",
+    "dotenv": "^6.1.0",
+    "koa": "^2.6.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-helmet": "^4.0.0",
+    "koa-logger": "^3.2.0",
+    "koa-respond": "^2.1.0",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.5"
+  }
+}
