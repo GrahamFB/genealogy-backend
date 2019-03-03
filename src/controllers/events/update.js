@@ -4,9 +4,9 @@ const update = ({ Event }, { config }) => async (req, res, next) => {
   const { _id } = req.params;
   try {
     const event = await Event.findOne({ _id });
-    _.extend(question, req.body);
-    await question.save();
-    res.status(200).send({ question });
+    _.extend(event, req.body);
+    await event.save();
+    res.status(200).send({ event });
   } catch (error) {
     next(error);
   }
