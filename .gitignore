@@ -1,48 +1,41 @@
-### Node template
-# Logs
-logs
-*.log
-npm-debug.log*
-
-# Runtime data
-pids
-*.pid
+lib-cov
 *.seed
-*.pid.lock
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.swp
 
+pids
+logs
+results
+tmp
 
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
+# Build
+public/css/main.css
 
-# node-waf configuration
-.lock-wscript
+# Coverage reports
+coverage
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
-
-# Dependency directories
-node_modules
-jspm_packages
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-#Ideas
-.idea
-
-# db
-dump/
-test/integration/db/
-
-#ENV
+# API keys and secrets
 .env
+
+# Dependency directory
+node_modules
+bower_components
+
+# Editors
+.idea
+*.iml
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist/**/*
+
+# ignore yarn.lock
+yarn.lock
