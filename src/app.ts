@@ -8,11 +8,14 @@ import path from "path";
 import mongoose from "mongoose";
 import bluebird from "bluebird";
 import { MONGODB_URI, SESSION_SECRET } from "./util/secrets";
+import expressStatusMon, { ExpressStatusMonitorConfig } from "express-status-monitor";
 
 const MongoStore = mongo(session);
 
 // Controllers (route handlers)
-import * as homeController from "./controllers/home";
+//import * as indexRouter from "./routes";
+import indexRouter from "./routes/index";
+import personRouter from "./routes/person";
 
 // Create Express server
 const app = express();
@@ -49,9 +52,19 @@ app.use(
     express.static(path.join(__dirname, "public"), { maxAge: 31557600000 })
 );
 
+const expressConfig: ExpressStatusMonitorConfig = {
+    title: "Express Status",  // Default title
+    theme: "default.css",     // Default styles
+    path: "/status",
+    socketPath: "/socket.io"
+};
+
+app.use(expressStatusMon(expressConfig));
+
 /**
  * Primary app routes.
  */
-app.get("/", homeController.index);
+app.use("/", indexRouter);
+app.use("/persons", personRouter);
 
 export default app;
