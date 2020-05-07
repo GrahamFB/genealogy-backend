@@ -34,7 +34,7 @@ export const findAll = async (
 
   try {
     const persons = await Person.find({}).sort({ _id: -1 }).skip(s).limit(l);
-    
+
     res.status(200).send(persons);
   } catch (error) {
     next(error);
@@ -47,10 +47,10 @@ export const findOne = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { id } = req.params;
+  const { _id } = req.params;
 
   try {
-    const person = await Person.findById(id);
+    const person = await Person.findOne({ _id });
 
     res.status(200).send({ person });
   } catch (error) {
@@ -59,11 +59,40 @@ export const findOne = async (
 };
 
 // Update a Person by the id in the request
-export const update = (req: Request, res: Response) => {
-  res.send("update()...");
+export const update = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { _id } = req.params;
+
+  try {
+    const person = await Person.findOne({ _id });
+
+    _.extend(person, req.body);
+
+    await person.save();
+
+    res.status(200).send({ person });
+  } catch (error) {
+    next(error);
+  }
 };
 
 // Delete a Person with the specified id in the request
-export const remove = (req: Request, res: Response) => {
-  res.send("remove()...");
+export const remove = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { _id } = req.params;
+  try {
+    const person = await Person.findOne({ _id });
+
+    await Person.deleteOne({ _id });
+
+    res.status(204).send({ person });
+  } catch (error) {
+    next(error);
+  }
 };

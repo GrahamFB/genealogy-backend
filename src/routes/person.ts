@@ -4,9 +4,9 @@ import { findAll, findOne, create, update, remove } from "../controllers/person/
 const router = express.Router();
 
 router.get("/", findAll);
-router.get("/:id", findOne);
+router.get("/:_id", findOne);
 router.post("/", create);
-router.put("/:id", update);
-router.delete("/:id", remove);
+router.put("/:_id", update);
+router.delete("/:_id", remove);
 
 export default router;

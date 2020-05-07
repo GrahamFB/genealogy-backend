@@ -1,12 +1,21 @@
 # Genealogy Backend
 
-The backend API component of the Genealogy Web Application
+The backend API component of the Genealogy Web Application.
+
+This is a Node JS (Express JS) REST API with a Mongo DB document store.
+
+Models are based on [GEDCOM X](http://www.gedcomx.org/schemas.html).
 
 ## Getting Started
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+* `Node JS` + NPM
+* `Yarn`
+* `Gitflow` (recommended)
+* `Docker` / `Mongo DB` Locally installed
+
+### Installing
 
 #### Node JS 
 
@@ -31,23 +40,56 @@ nvm install-latest-npm
 npm install -g yarn
 ```
 
-### Installing
+#### Gitflow (recommended)
 
-A step by step series of examples that tell you how to get a development env running
+* See [Linux]([https://](https://github.com/nvie/gitflow/wiki/Linux))
+* See [Mac OS](https://github.com/nvie/gitflow/wiki/Mac-OS-X)
+* See [Windows](https://github.com/nvie/gitflow/wiki/Windows)
 
-Say what the step will be
+#### Docker
+
+See your Operating System's distribution.
+
+#### Clone Project
 
 ```
-Give the example
+git clone https://github.com/GrahamBragg/genealogy-backend.git
+```
+#### Install Dependencies
+
+```
+cd genealogy-backend/
+
+yarn install
 ```
 
-And repeat
+#### Create new .env file from .env.example
 
 ```
-until finished
+cp .env.example .env
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Edit the `.env` file to suit.
+
+#### Debug
+
+Make sure Mongo DB is accessible at the address in `.env` (probably mongodb://localhost:27017)
+
+##### Docker
+
+```
+mkdir ~/data
+
+docker run --name mongo -d -p 27017:27017 -v ~/data:/data/db mongo
+```
+
+##### Debug the project
+
+```
+yarn run debug
+```
+
+The application will start on the port defined in `.env`.
 
 ## Running the tests
 
@@ -55,18 +97,10 @@ Explain how to run the automated tests for this system
 
 ### Break down into end to end tests
 
-Explain what these tests test and why
+//TODOD
 
 ```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
+Example
 ```
 
 ## Deployment
@@ -75,23 +109,20 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+* [Express JS](https://expressjs.com/) - The web framework used
+* [NPM](https://www.npmjs.com/) - Dependency Management
+* [MongoDB](https://www.mongodb.com/) - Database and document store
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/GrahamBragg/genealogy-backend/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Graham Bragg** - *Concept, Design and main developer* - [Graham Bragg](https://github.com/GrahamBragg)
+* **Simon Bragg** - *Design and developer* - [Simon Bragg](https://github.com/maiorsi)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/GrahamBragg/genealogy-backend/graphs/contributors) who participated in this project.
 
 ## License
 
@@ -99,6 +130,65 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* [gedcomx-ts](https://github.com/Freedoms-Loom/gedcomx-ts)
-* Inspiration
-* etc
+* Significant inspiration (bordline copying) for models from [gedcomx-ts](https://github.com/Freedoms-Loom/gedcomx-ts)
+
+## TODO
+* Add routes and controllers for Events.
+* Add routes and controllers for Relationships.
+* Expand model to include all GEDCOMX types.
+* Add logging to API endpoints.
+* Add Validation to models and API endpoints.
+* Add Swagger documentation and UI.
+
+## Sample JSON
+
+### Create a new Person
+```
+{
+    "names": [
+        {
+            "type": "BIRTH_NAME",
+            "nameForms": [
+                {
+                    "fullText": "John Abraham Mark Smith",
+                    "parts": [
+                        {
+                            "type": "GIVEN",
+                            "value": "John"
+                        },
+                        {
+                            "type": "GIVEN",
+                            "value": "Abraham"
+                        },
+                        {
+                            "type": "GIVEN",
+                            "value": "Mark"
+                        },
+                        {
+                            "type": "SURNAME",
+                            "value": "Smith"
+                        }
+                    ]
+                }
+            ],
+            "confidence": "HIGH"
+        }
+    ],
+    "facts": [
+        {
+            "type": "BIRTH",
+            "date": "1970-01-01",
+            "place": {
+                "original": "Canberra"
+            },
+            "confidence": "HIGH",
+            "sources": [
+                {
+                    "description": "Birth Certificate"
+                }
+            ]
+        }
+    ],
+    "gender": "MALE"
+}
+```
