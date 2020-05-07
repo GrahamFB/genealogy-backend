@@ -59,7 +59,7 @@ export const findOne = async (
 };
 
 // Update a Person by the id in the request
-export const update = async (
+export const put = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -67,6 +67,28 @@ export const update = async (
   const { _id } = req.params;
 
   try {
+    const person = await Person.findOne({ _id });
+
+    _.extend(person, req.body);
+
+    await person.save();
+
+    res.status(200).send({ person });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Update a Person by the id in the request
+export const patch = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { _id } = req.params;
+
+  try {
+    // TODO: Fix this to actually patch
     const person = await Person.findOne({ _id });
 
     _.extend(person, req.body);
