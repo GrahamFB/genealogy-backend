@@ -88,7 +88,6 @@ export const patch = async (
   const { _id } = req.params;
 
   try {
-    // TODO: Fix this to actually patch
     const person = await Person.findOne({ _id });
 
     _.extend(person, req.body);

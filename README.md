@@ -97,7 +97,7 @@ Explain how to run the automated tests for this system
 
 ### Break down into end to end tests
 
-//TODOD
+//TODO
 
 ```
 Example
@@ -133,8 +133,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 * Significant inspiration (bordline copying) for models from [gedcomx-ts](https://github.com/Freedoms-Loom/gedcomx-ts)
 
 ## TODO
-* Add routes and controllers for Events.
-* Add routes and controllers for Relationships.
+* Add routes, controllers and any additional models for Events.
+* Add routes, controllers and any additional models for Relationships.
 * Expand model to include all GEDCOMX types.
 * Add logging to API endpoints.
 * Add Validation to models and API endpoints.

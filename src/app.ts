@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import compression from "compression";  // compresses requests
 import session from "express-session";
 import bodyParser from "body-parser";
@@ -16,6 +16,7 @@ const MongoStore = mongo(session);
 //import * as indexRouter from "./routes";
 import indexRouter from "./routes/index";
 import personRouter from "./routes/person";
+import logger from "./util/logger";
 
 // Create Express server
 const app = express();
@@ -64,7 +65,11 @@ app.use(expressStatusMon(expressConfig));
 /**
  * Primary app routes.
  */
+app.all("*", (req: Request, res: Response, next: NextFunction) => {
+    logger.debug(req.method + " " + req.url);
+    next();
+});
 app.use("/", indexRouter);
-app.use("/persons", personRouter);
+app.use("/api/v1/persons", personRouter);
 
 export default app;
