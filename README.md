@@ -14,6 +14,7 @@ Models are based on [GEDCOM X](http://www.gedcomx.org/schemas.html).
 * `Yarn`
 * `Gitflow` (recommended)
 * `Docker` / `Mongo DB` Locally installed
+* `Nest CLI` (recommended)
 
 ### Installing
 
@@ -50,6 +51,12 @@ npm install -g yarn
 
 See your Operating System's distribution.
 
+#### Nest CLI
+
+```
+npm install -g @nestjs/cli
+```
+
 #### Clone Project
 
 ```
@@ -64,16 +71,17 @@ yarn install
 ```
 
 #### Create new .env file from .env.example
+_Create a local one for dev/debug as well_
 
 ```
 cp .env.example .env
 ```
 
-Edit the `.env` file to suit.
+Edit the `.env` and `.local.env` file to suit.
 
 #### Debug
 
-Make sure Mongo DB is accessible at the address in `.env` (probably mongodb://localhost:27017)
+Make sure Mongo DB is accessible at the address in `.env`/`.local.env` (probably mongodb://localhost:27017)
 
 ##### Docker
 
@@ -86,10 +94,10 @@ docker run --name mongo -d -p 27017:27017 -v ~/data:/data/db mongo
 ##### Debug the project
 
 ```
-yarn run debug
+yarn run start:debug
 ```
 
-The application will start on the port defined in `.env`.
+The application will start on the port defined in `.env`/`.local.env`.
 
 ## Running the tests
 
@@ -109,7 +117,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Express JS](https://expressjs.com/) - The web framework used
+* [Nest JS](https://nestjs.com/) - The web framework used
 * [NPM](https://www.npmjs.com/) - Dependency Management
 * [MongoDB](https://www.mongodb.com/) - Database and document store
 
