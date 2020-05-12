@@ -6,7 +6,24 @@ This is a Node JS (Express JS) REST API with a Mongo DB document store.
 
 Models are based on [GEDCOM X](http://www.gedcomx.org/schemas.html).
 
+## TODO
+* Add routes, controllers and any additional models for Events.
+* Add routes, controllers and any additional models for Relationships.
+* Develop model for multi-tree paradigm - tenancies for individual families to use with ability to link trees.
+* Expand model to include all GEDCOMX types.
+* Add additional logging to API endpoints.
+* Add exception handling to API endpoints.
+* Add Validation to models and API endpoints.
+* Add additional Swagger documentation.
+* Add Authentication and Authorisation
+  * Authentication via passport modules as per [Nest JS Authentication](https://docs.nestjs.com/techniques/authentication) - Allow Google, Microsoft, Facebook.
+
 ## Getting Started
+
+### Pre-reading
+
+* [Nest JS Docs](https://docs.nestjs.com/)
+* [Modern Full-Stack Development with Nest.js, React, TypeScript, and MongoDB](https://auth0.com/blog/modern-full-stack-development-with-nestjs-react-typescript-and-mongodb-part-1/)
 
 ### Prerequisites
 
@@ -91,13 +108,19 @@ mkdir ~/data
 docker run --name mongo -d -p 27017:27017 -v ~/data:/data/db mongo
 ```
 
-##### Debug the project
+### Debug the project
 
 ```
 yarn run start:debug
 ```
 
 The application will start on the port defined in `.env`/`.local.env`.
+
+### Nest CLI
+
+It is recommended to use Nest CLI when adding `modules`, `services`, etc.
+
+View the docs at [Nest CLI Usage](https://docs.nestjs.com/cli/usages)
 
 ## Running the tests
 
@@ -138,15 +161,13 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Significant inspiration (bordline copying) for models from [gedcomx-ts](https://github.com/Freedoms-Loom/gedcomx-ts)
+* Significant inspiration (straight copying) for models from [gedcomx-ts](https://github.com/Freedoms-Loom/gedcomx-ts)
 
-## TODO
-* Add routes, controllers and any additional models for Events.
-* Add routes, controllers and any additional models for Relationships.
-* Expand model to include all GEDCOMX types.
-* Add logging to API endpoints.
-* Add Validation to models and API endpoints.
-* Add Swagger documentation and UI.
+## Swagger UI
+
+This project includes a swagger api definition which can be accessed at [http://localhost:3000/api](http://localhost:3000/api).
+
+This contains a reference to the API end points and the models involved.
 
 ## Sample JSON
 
