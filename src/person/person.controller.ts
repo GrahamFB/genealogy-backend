@@ -12,15 +12,18 @@ import {
   Inject,
 } from "@nestjs/common";
 import { PersonService } from "./person.service";
-import { Person } from "./person.interface";
 import { Request, NextFunction } from "express";
 import { Logger } from "winston";
 import { Operation, applyPatch } from 'fast-json-patch';
+import { CreatePersonDto } from "./dto/create-person.dto";
+import { ApiResponse, ApiTags } from "@nestjs/swagger";
+import { Person } from "./interfaces/person.interface";
 
 const prefix = "api/v1/person";
 
 // TODO (simon) - Add error handling and validation
 @Controller(prefix)
+@ApiTags('people')
 export class PersonController {
   constructor(
     @Inject("PersonService") private readonly personService: PersonService,
@@ -34,8 +37,9 @@ export class PersonController {
   }
 
   @Post()
-  async create(@Body() person: Person): Promise<Person> {
-    return this.personService.create(person);
+  @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
+  async create(@Body() personDto: CreatePersonDto): Promise<Person> {
+    return this.personService.create(personDto);
   }
 
   @Get()

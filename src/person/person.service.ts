@@ -1,17 +1,18 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { Person } from "./person.interface";
+import { Person as PersonDocument, Person } from "./interfaces/person.interface";
 import * as mongoose from "mongoose";
+import { CreatePersonDto } from "./dto/create-person.dto";
 
 @Injectable()
 export class PersonService {
   constructor(
-    @InjectModel("Person") private readonly personModel: Model<Person>
+    @InjectModel("Person") private readonly personModel: Model<PersonDocument>
   ) {}
 
-  async create(person: Person): Promise<Person> {
-    const p = new this.personModel(person);
+  async create(personDto: CreatePersonDto): Promise<Person> {
+    const p = new this.personModel(personDto);
     return p.save();
   }
 

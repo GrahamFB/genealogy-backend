@@ -28,3 +28,5 @@ export enum NamePartQualifier {
 export type Qualifier = SourceReferenceQualifier | NamePartQualifier | {
     value?: string;
 };
+
+export const QualifierEnum = { ...SourceReferenceQualifier, ...NamePartQualifier };
