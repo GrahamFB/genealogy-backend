@@ -7,9 +7,9 @@ This is a Node JS (Express JS) REST API with a Mongo DB document store.
 Models are based on [GEDCOM X](http://www.gedcomx.org/schemas.html).
 
 ## TODO
-* Add routes, controllers and any additional models for Events.
-* Add routes, controllers and any additional models for Relationships.
-* Develop model for multi-tree paradigm - tenancies for individual families to use with ability to link trees.
+* Add routes, controllers and any additional models for Events - `Graham Bragg`.
+* Add routes, controllers and any additional models for Relationships - `Graham Bragg`.
+* Develop model for multi-tree paradigm - tenancies for individual families to use with ability to link trees. - `Simon Bragg`
 * Expand model to include all GEDCOMX types.
 * Add additional logging to API endpoints.
 * Add exception handling to API endpoints.
@@ -115,6 +115,16 @@ yarn run start:debug
 ```
 
 The application will start on the port defined in `.env`/`.local.env`.
+
+You should be able to navigate to the URL http://localhost:{port}.
+
+E.g. [http://localhost:3000](http://localhost:3000) for default.
+
+This is the root for the API.
+
+#### API Test Software
+
+It is recommend to use software such as Insomnia or Postman for testing the API.
 
 ### Nest CLI
 
