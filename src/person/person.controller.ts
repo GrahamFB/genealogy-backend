@@ -14,6 +14,7 @@ import {
 import { PersonService } from "./person.service";
 import { Request, NextFunction } from "express";
 import { Logger } from "winston";
+import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { Operation, applyPatch } from 'fast-json-patch';
 import { CreatePersonDto } from "./dto/create-person.dto";
 import { ApiResponse, ApiTags } from "@nestjs/swagger";
@@ -27,7 +28,7 @@ const prefix = "api/v1/person";
 export class PersonController {
   constructor(
     @Inject("PersonService") private readonly personService: PersonService,
-    @Inject("winston") private readonly logger: Logger,
+    @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
   ) {}
 
   @All()

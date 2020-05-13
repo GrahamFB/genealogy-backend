@@ -4,7 +4,7 @@ import { AppService } from "./app.service";
 import { MongooseModule } from "@nestjs/mongoose";
 import { PersonModule } from "./person/person.module";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { WinstonModule } from 'nest-winston';
+import { utilities as nestWinstonModuleUtilities, WinstonModule } from 'nest-winston';
 import * as winston from 'winston';
 import * as DailyRotateFile from "winston-daily-rotate-file";
 
@@ -12,7 +12,12 @@ import * as DailyRotateFile from "winston-daily-rotate-file";
   imports: [
     WinstonModule.forRoot({
       transports: [
-        new winston.transports.Console(),
+        new winston.transports.Console({
+          format: winston.format.combine(
+            winston.format.timestamp(),
+            nestWinstonModuleUtilities.format.nestLike(),
+          ),
+        }),
         new DailyRotateFile({
           level: "debug",
           filename: "logs/gen-backend-%DATE%.log",
