@@ -5,6 +5,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { PersonModule } from "./person/person.module";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { utilities as nestWinstonModuleUtilities, WinstonModule } from 'nest-winston';
+import { EventModule } from './event/event.module';
 import * as winston from 'winston';
 import * as DailyRotateFile from "winston-daily-rotate-file";
 
@@ -40,6 +41,7 @@ import * as DailyRotateFile from "winston-daily-rotate-file";
       inject: [ConfigService],
     }),
     PersonModule,
+    EventModule,
   ],
   controllers: [AppController],
   providers: [AppService],
