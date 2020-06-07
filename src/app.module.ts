@@ -8,6 +8,7 @@ import { utilities as nestWinstonModuleUtilities, WinstonModule } from 'nest-win
 import { EventModule } from './event/event.module';
 import * as winston from 'winston';
 import * as DailyRotateFile from "winston-daily-rotate-file";
+import { RelationshipModule } from "./relationship/relationship.module";
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import * as DailyRotateFile from "winston-daily-rotate-file";
     }),
     PersonModule,
     EventModule,
+    RelationshipModule
   ],
   controllers: [AppController],
   providers: [AppService],
