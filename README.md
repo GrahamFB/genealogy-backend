@@ -179,8 +179,6 @@ This project includes a swagger api definition which can be accessed at [http://
 
 This contains a reference to the API end points and the models involved.
 
-## Testing Git Update
-
 ## Sample JSON
 
 ### Create a new Person
