@@ -208,6 +208,24 @@ This contains a reference to the API end points and the models involved.
                             "value": "Smith"
                         }
                     ]
+                },
+                {
+                    "type": "ALSO_KNOWN_AS",
+                    "nameForms": [
+                        {
+                            "fullText": "Jack Smith",
+                            "parts": [
+                                {
+                                    "type": "GIVEN",
+                                    "value": "Jack"
+                                },
+                                {
+                                    "type": "SURNAME",
+                                    "value": "Smith"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ],
             "confidence": "HIGH"
